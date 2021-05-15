@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container label, .container input[type="checkbox"] {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.removeButton {
+    color: red;
+}
+
+.completed {
+    text-decoration: line-through;
+}
