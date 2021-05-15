@@ -20,6 +20,27 @@ const App = ({ tasks }) => {
 
   }
 
+  const toggleEdit = (id) => {
+
+    const idx = totalTasks.findIndex(task => task.id === id);
+    if (idx > -1) totalTasks[idx].editing = !totalTasks[idx].editing;
+
+    setTasks([...totalTasks]);
+
+  }
+
+  const editDone = (item) => {
+
+    const idx = totalTasks.findIndex(task => task.id === item.id);
+    if (idx > -1) {
+      totalTasks[idx] = item;
+      totalTasks[idx].editing = false;
+    }
+
+
+    setTasks([...totalTasks]);
+  }
+
   const removeHandler = (id) => {
     setTasks(totalTasks.filter(item => item.id !== id));
   }
@@ -35,8 +56,14 @@ const App = ({ tasks }) => {
             {totalTasks.map((task, i) =>
               <TaskItem key={i} item={task}
                 toggleTask={toggleComplete}
+                toggleEdit={toggleEdit}
+                editDone={editDone}
                 removeTask={removeHandler} />
             )}
+            <div className="more-info">
+              <span>&#10069;</span>
+              Click on items to edit
+            </div>
           </div> : 'Add some items...'}
       </div>
 
