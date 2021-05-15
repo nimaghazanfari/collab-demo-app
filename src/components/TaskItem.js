@@ -1,7 +1,8 @@
 import React from 'react';
+import TaskEdit from './TaskEdit';
 import styles from './TaskItem.module.css';
 
-const TaskItem = ({ item, removeTask, toggleTask }) => {
+const TaskItem = ({ item, removeTask, toggleTask, toggleEdit, editDone }) => {
 
     return (
         <div className={styles.container}>
@@ -11,10 +12,17 @@ const TaskItem = ({ item, removeTask, toggleTask }) => {
                     id={item.id}
                     onChange={() => toggleTask(item.id)}
                 />
-				<label
-					onClick={() => toggleTask(item.id)}
-					className={item.completed ? styles.completed : ''}
-				>{item.name}</label>
+                {!item.editing ?
+                    <label
+                        onClick={() => toggleEdit(item.id)}
+                        className={item.completed ? styles.completed : ''}
+                    >{item.name}</label>
+                    :
+                    <TaskEdit item={item} 
+                        toggleEdit={() => toggleEdit(item.id)} 
+                        editDone={(ed) => editDone(ed)} 
+                    />
+                }
             </div>
             <button
                 className={styles.removeButton}
@@ -24,4 +32,5 @@ const TaskItem = ({ item, removeTask, toggleTask }) => {
         </div>
     );
 }
+
 export default TaskItem;
