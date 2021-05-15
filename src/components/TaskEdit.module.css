@@ -1,0 +1,11 @@
+.editContainer {
+    margin-left: 15px;
+}
+
+.editContainer button {
+    margin-left: 10px;
+}
+
+form {
+    display: inline;
+}
