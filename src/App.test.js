@@ -17,4 +17,11 @@ describe('<App /> test scenarios', () => {
     expect(screen.queryByText(mockData[2].name)).not.toBeInTheDocument();
   })
 
+  it('should show textbox for editing', () => {
+    render(<App tasks={mockData} />);
+    userEvent.click(screen.getByTestId(`editing-${mockData[1].id}`));
+    expect(screen.getByTestId(`txt-${mockData[1].id}`)).toBeInTheDocument();
+    expect(screen.getByTestId(`txt-${mockData[1].id}`)).toHaveValue(mockData[1].name);
+  })
+
 });

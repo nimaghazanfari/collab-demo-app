@@ -20,6 +20,7 @@ const TaskEdit = ({ item, toggleEdit, editDone }) => {
                 <input
                     type="text"
                     value={val}
+                    data-testid={`txt-${item.id}`}
                     onChange={updateVal}
                     className={styles.input}
                 />
